@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://b31f8i1645tiy"]
+
+[ext_resource type="Script" path="res://Menu/Main.gd" id="1_rp6mf"]
+[ext_resource type="PackedScene" uid="uid://ciaidi6hkn5u" path="res://Game/Player/Player.tscn" id="2_m3mdo"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1pcfn"]
+a = Vector2(0, 648)
+b = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o318d"]
+size = Vector2(1291.5, 140)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_62i16"]
+a = Vector2(-2, 648)
+b = Vector2(-2, 0)
+
+[node name="Enviorment" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_1pcfn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(586, 622)
+shape = SubResource("RectangleShape2D_o318d")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(584, -72)
+shape = SubResource("RectangleShape2D_o318d")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1154, 0)
+shape = SubResource("SegmentShape2D_62i16")
+
+[node name="Game_quit" type="Button" parent="."]
+offset_left = 464.0
+offset_top = 8.0
+offset_right = 731.0
+offset_bottom = 127.0
+text = "Quit"
+script = ExtResource("1_rp6mf")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -104.0
+offset_top = 552.0
+offset_right = 1273.0
+offset_bottom = 690.0
+
+[node name="Player" parent="." instance=ExtResource("2_m3mdo")]
+
+[connection signal="pressed" from="Game_quit" to="Game_quit" method="_on_finished_pressed"]

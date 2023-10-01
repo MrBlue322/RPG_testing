@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://biklhm51rojme"]
+
+[ext_resource type="Texture2D" uid="uid://dtmfd43g5k8dt" path="res://Menu/download.jpg" id="1_aghl8"]
+[ext_resource type="Script" path="res://Menu/Main.gd" id="2_0cp33"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Download" type="Sprite2D" parent="."]
+position = Vector2(608, 376)
+scale = Vector2(4.70821, 4.53446)
+texture = ExtResource("1_aghl8")
+
+[node name="Menu_Play" type="Button" parent="."]
+offset_left = 184.0
+offset_top = 488.0
+offset_right = 472.0
+offset_bottom = 568.0
+text = "Play"
+script = ExtResource("2_0cp33")
+
+[node name="Menu_Quit" type="Button" parent="."]
+offset_left = 728.0
+offset_top = 488.0
+offset_right = 1016.0
+offset_bottom = 568.0
+text = "Quit
+"
+
+[connection signal="pressed" from="Menu_Play" to="Menu_Play" method="_on_play_pressed"]
+[connection signal="pressed" from="Menu_Quit" to="Menu_Play" method="_on_quit_pressed"]
