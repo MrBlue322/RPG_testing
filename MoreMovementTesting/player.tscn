@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://kj8ucsl0y0oa"]
+
+[ext_resource type="Script" path="res://player.cs" id="1_55qf0"]
+[ext_resource type="Texture2D" uid="uid://bea0gxi5ssfqa" path="res://Media/Pixel Art Top Down - Basic/Texture/TX Player.png" id="2_dh51u"]
+[ext_resource type="Script" path="res://facing.cs" id="4_erath"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpoby"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ctj5u"]
+load_path = "res://.godot/imported/TX Player.png-a811deebe853188c7c60d74d6b72f852.ctex"
+
+[sub_resource type="CSharpScript" id="CSharpScript_5gxsi"]
+script/source = "using Godot;
+using System;
+
+public partial class facing : Sprite2D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_55qf0")
+
+[node name="Player_hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jpoby")
+
+[node name="Left" type="Sprite2D" parent="."]
+texture = ExtResource("2_dh51u")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 64)
+script = ExtResource("4_erath")
+
+[node name="Back" type="Sprite2D" parent="."]
+texture = ExtResource("2_dh51u")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 64)
+script = ExtResource("4_erath")
+
+[node name="Forward" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_ctj5u")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 64)
+script = ExtResource("4_erath")
+
+[node name="Right" type="Sprite2D" parent="."]
+texture = ExtResource("2_dh51u")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 64)
+script = SubResource("CSharpScript_5gxsi")
